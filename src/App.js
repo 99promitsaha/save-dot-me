@@ -45,7 +45,7 @@ function App() {
   return (
     <div className="container mx-auto p-5">
       <h1 className="text-gray-800 text-3xl font-bold mb-6 text-center">
-        Profile Submissions
+        Save Profiles
       </h1>
       {showDeleteSuccess && (
         <div className="mt-12 mx-4 px-4 rounded-md border-l-4 border-red-500 bg-red-50 md:max-w-2xl md:mx-auto md:px-8">
