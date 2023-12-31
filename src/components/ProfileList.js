@@ -1,6 +1,6 @@
 import React from "react";
 
-function ProfileList({ profiles, onDelete }) {
+function ProfileList({ profiles, onDelete, onEdit }) {
   return (
     <div className="max-w-screen-xl mx-auto px-4 md:px-8">
       <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
@@ -10,6 +10,7 @@ function ProfileList({ profiles, onDelete }) {
               <th className="py-3 px-6">Name</th>
               <th className="py-3 px-6">Twitter URL</th>
               <th className="py-3 px-6">GitHub URL</th>
+              <th className="py-3 px-6">Edit Profile</th>
               <th className="py-3 px-6">Delete Profile</th>
             </tr>
           </thead>
@@ -36,6 +37,14 @@ function ProfileList({ profiles, onDelete }) {
                   >
                     {profile.githubLink}
                   </a>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <button
+                    onClick={() => onEdit(profile)}
+                    className="text-blue-500 hover:text-blue-700"
+                  >
+                    📝
+                  </button>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <button
