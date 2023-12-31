@@ -74,8 +74,8 @@ function App() {
     <div>
       <Header />
       <div className="container mx-auto px-4">
-        <h1 className="text-gray-800 text-3xl font-bold mb-6 text-center">
-          Save Profiles
+        <h1 className="text-blue-600 decoration-dotted text-6xl font-extrabold mb-6 text-center heading">
+          Save.me
         </h1>
         {showDeleteSuccess && (
           <div className="mt-12 mx-4 px-4 rounded-md border-l-4 border-red-500 bg-red-50 md:max-w-2xl md:mx-auto md:px-8">
