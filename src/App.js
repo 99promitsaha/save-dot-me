@@ -7,7 +7,7 @@ function App() {
 
     useEffect(() => {
         // Fetch existing profiles
-        fetch('http://localhost:5001/profiles')
+        fetch('https://backend-demo-3hll.onrender.com/profiles')
             .then((response) => response.json())
             .then(setProfiles)
             .catch(console.error);
@@ -15,7 +15,7 @@ function App() {
 
     const addProfile = (profile) => {
         // Send the new profile to the server
-        fetch('http://localhost:5001/profiles', {
+        fetch('https://backend-demo-3hll.onrender.com/profiles', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
