@@ -11,14 +11,14 @@ function App() {
   }, []);
 
   const fetchProfiles = () => {
-    fetch("https://backend-demo-3hll.onrender.com/profiles")
+    fetch("https://hammerhead-app-4r3pr.ondigitalocean.app/profiles")
       .then((response) => response.json())
       .then((data) => setProfiles(data))
       .catch(console.error);
   };
 
   const addProfile = (profile) => {
-    fetch("https://backend-demo-3hll.onrender.com/profiles", {
+    fetch("https://hammerhead-app-4r3pr.ondigitalocean.app/profiles", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(profile),
@@ -30,7 +30,7 @@ function App() {
 
   const deleteProfile = (id) => {
     setTimeout(() => {
-      fetch(`https://backend-demo-3hll.onrender.com/profiles/${id}`, {
+      fetch(`https://hammerhead-app-4r3pr.ondigitalocean.app/profiles/${id}`, {
         method: "DELETE",
       })
         .then(() => {
