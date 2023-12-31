@@ -1,13 +1,14 @@
 import React, { useState } from "react";
+import ReactStars from "react-rating-stars-component";
 
 function EditProfileForm({ profile, onSubmit, onCancel }) {
   const [name, setName] = useState(profile.name);
   const [twitterLink, setTwitterLink] = useState(profile.twitterLink);
-  const [githubLink, setGithubLink] = useState(profile.githubLink);
+  const [starRating, setStarRating] = useState(profile.starRating);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ ...profile, name, twitterLink, githubLink });
+    onSubmit({ ...profile, name, twitterLink, starRating });
   };
 
   return (
@@ -37,13 +38,14 @@ function EditProfileForm({ profile, onSubmit, onCancel }) {
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700">
-            GitHub URL
+            Star Rating
           </label>
-          <input
-            type="url"
-            value={githubLink}
-            onChange={(e) => setGithubLink(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          <ReactStars
+            count={5}
+            value={starRating}
+            onChange={setStarRating}
+            size={24}
+            activeColor="#ffd700"
           />
         </div>
         <button

@@ -1,15 +1,16 @@
 import React from "react";
+import ReactStars from "react-rating-stars-component";
 
 function ProfileList({ profiles, onDelete, onEdit }) {
   return (
     <div className="max-w-screen-xl mx-auto px-4 md:px-8">
       <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
-        <table className="w-full table-auto text-sm text-centre">
+        <table className="w-full table-auto text-sm text-center">
           <thead className="bg-gray-50 text-gray-600 font-medium border-b">
             <tr>
               <th className="py-3 px-6">Name</th>
               <th className="py-3 px-6">Twitter URL</th>
-              <th className="py-3 px-6">GitHub URL</th>
+              <th className="py-3 px-6">Rating</th>
               <th className="py-3 px-6">Edit Profile</th>
               <th className="py-3 px-6">Delete Profile</th>
             </tr>
@@ -29,14 +30,13 @@ function ProfileList({ profiles, onDelete, onEdit }) {
                   </a>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <a
-                    href={profile.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800"
-                  >
-                    {profile.githubLink}
-                  </a>
+                  <ReactStars
+                    count={5}
+                    value={profile.starRating}
+                    edit={false}
+                    size={24}
+                    activeColor="#ffd700"
+                  />
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <button

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import ReactStars from "react-rating-stars-component";
 
 function ProfileForm({ onSubmit }) {
   const [name, setName] = useState("");
   const [twitterLink, setTwitterLink] = useState("");
-  const [githubLink, setGithubLink] = useState("");
+  const [starRating, setStarRating] = useState(3);
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -13,12 +14,12 @@ function ProfileForm({ onSubmit }) {
 
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    await onSubmit({ name, twitterLink, githubLink });
+    await onSubmit({ name, twitterLink, starRating });
     setIsLoading(false);
     setShowSuccess(true);
     setName("");
     setTwitterLink("");
-    setGithubLink("");
+    setStarRating(1); // Reset star rating
 
     setTimeout(() => setShowSuccess(false), 3000);
   };
@@ -84,13 +85,12 @@ function ProfileForm({ onSubmit }) {
           placeholder="Twitter URL"
           required
         />
-        <input
-          className="w-full p-2 border border-gray-300 rounded mb-4"
-          type="url"
-          value={githubLink}
-          onChange={(e) => setGithubLink(e.target.value)}
-          placeholder="GitHub URL"
-          required
+        <ReactStars
+          count={5}
+          value={starRating}
+          onChange={setStarRating}
+          size={24}
+          activeColor="#ffd700"
         />
         <button
           type="submit"
