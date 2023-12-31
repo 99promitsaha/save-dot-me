@@ -43,7 +43,7 @@ function App() {
   };
 
   return (
-    <div className="mx-auto">
+    <div>
       <div className="bg-blue-600 mb-10">
         <div className="max-w-screen-xl mx-auto px-4 py-3 flex items-start justify-between text-white sm:items-center md:px-8">
           <div className="flex-1 justify-center flex items-start gap-x-4 sm:items-center">
@@ -74,65 +74,57 @@ function App() {
               </a>
             </p>
           </div>
-          <button className="p-2 rounded-lg duration-150 hover:bg-indigo-500 ring-offset-2 focus:ring">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="w-6 h-6"
-            >
-              <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
-            </svg>
-          </button>
         </div>
       </div>
-      <h1 className="text-gray-800 text-3xl font-bold mb-6 text-center">
-        Save Profiles
-      </h1>
-      {showDeleteSuccess && (
-        <div className="mt-12 mx-4 px-4 rounded-md border-l-4 border-red-500 bg-red-50 md:max-w-2xl md:mx-auto md:px-8">
-          <div className="flex justify-between py-3">
-            <div className="flex">
-              <div>
+      <div className="container mx-auto px-4">
+        <h1 className="text-gray-800 text-3xl font-bold mb-6 text-center">
+          Save Profiles
+        </h1>
+        {showDeleteSuccess && (
+          <div className="mt-12 mx-4 px-4 rounded-md border-l-4 border-red-500 bg-red-50 md:max-w-2xl md:mx-auto md:px-8">
+            <div className="flex justify-between py-3">
+              <div className="flex">
+                <div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 text-red-500"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <div className="self-center ml-3">
+                  <span className="text-red-600 font-semibold">Error</span>
+                  <p className="text-red-600 mt-1">
+                    Profile has been deleted successfully!
+                  </p>
+                </div>
+              </div>
+              <button className="self-start text-red-500">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-red-500"
+                  className="h-5 w-5"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
                   <path
                     fillRule="evenodd"
-                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                     clipRule="evenodd"
                   />
                 </svg>
-              </div>
-              <div className="self-center ml-3">
-                <span className="text-red-600 font-semibold">Error</span>
-                <p className="text-red-600 mt-1">
-                  Profile has been deleted successfully!
-                </p>
-              </div>
+              </button>
             </div>
-            <button className="self-start text-red-500">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
           </div>
-        </div>
-      )}
-      <ProfileForm onSubmit={addProfile} />
-      <ProfileList profiles={profiles} onDelete={deleteProfile} />
+        )}
+        <ProfileForm onSubmit={addProfile} />
+        <ProfileList profiles={profiles} onDelete={deleteProfile} />
+      </div>
     </div>
   );
 }
