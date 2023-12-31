@@ -4,7 +4,7 @@ import ReactStars from "react-rating-stars-component";
 function ProfileList({ profiles, onDelete, onEdit }) {
   return (
     <div className="max-w-screen-xl mx-auto px-4 md:px-8">
-      <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
+      <div className="my-12 shadow-sm border rounded-lg overflow-x-auto">
         <table className="w-full table-auto text-sm text-center">
           <thead className="bg-gray-50 text-gray-600 font-medium border-b">
             <tr>
