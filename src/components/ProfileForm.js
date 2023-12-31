@@ -85,13 +85,19 @@ function ProfileForm({ onSubmit }) {
           placeholder="Twitter URL"
           required
         />
-        <ReactStars
-          count={5}
-          value={starRating}
-          onChange={setStarRating}
-          size={24}
-          activeColor="#ffd700"
-        />
+        <div className="mt-4">
+          <label className="block text-lg font-semibold text-gray-700 mb-2">
+            Your Rating:
+          </label>
+          <ReactStars
+            count={5}
+            value={starRating}
+            onChange={setStarRating}
+            size={30}
+            activeColor="#ffd700"
+            classNames="flex justify-center space-x-1 mb-4"
+          />
+        </div>
         <button
           type="submit"
           className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition duration-300"
