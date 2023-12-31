@@ -28,8 +28,8 @@ function App() {
     };
 
     return (
-        <div>
-            <h1>Profile Submissions</h1>
+        <div className="container mx-auto p-5">
+            <h1 className="text-gray-800 text-3xl font-bold mb-6 text-center">Profile Submissions</h1>
             <ProfileForm onSubmit={addProfile} />
             <ProfileList profiles={profiles} />
         </div>
