@@ -4,12 +4,14 @@ import ProfileList from "./components/ProfileList";
 import EditProfileForm from "./components/EditProfileForm";
 import Header from "./components/Header";
 import DeleteSuccessMessage from "./components/DeleteSuccessMessage";
+import UpdateSuccessMessage from "./components/UpdateSuccessMessage";
 
 function App() {
   const [profiles, setProfiles] = useState([]);
   const [showDeleteSuccess, setShowDeleteSuccess] = useState(false);
   const [editingProfile, setEditingProfile] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [showUpdateSuccess, setShowUpdateSuccess] = useState(false);
 
   useEffect(() => {
     fetchProfiles();
@@ -63,18 +65,26 @@ function App() {
   };
 
   const updateProfile = (updatedData) => {
-    fetch(`https://api.savedotme.xyz/profiles/${editingProfile._id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updatedData),
-    })
-      .then((response) => response.json())
-      .then(() => {
-        fetchProfiles();
-        setEditingProfile(null);
+    return new Promise((resolve, reject) => {
+      fetch(`https://api.savedotme.xyz/profiles/${editingProfile._id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedData),
       })
-      .catch(console.error);
-  };
+      .then((response) => response.json())
+      .then((data) => {
+        setShowUpdateSuccess(true);
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
+        resolve(data); // Resolve the promise with the data
+      })
+      .catch((error) => {
+        console.error(error);
+        reject(error); // Reject the promise with the error
+      });
+    });
+  };  
 
   return (
     <div>
@@ -86,6 +96,7 @@ function App() {
         {showDeleteSuccess && (
           <DeleteSuccessMessage onClose={closeDeleteSuccessMessage} />
         )}
+        {showUpdateSuccess && <UpdateSuccessMessage />} {/* Add this line */}
         {editingProfile ? (
           <EditProfileForm
             profile={editingProfile}
@@ -103,7 +114,7 @@ function App() {
         />
       </div>
     </div>
-  );
+  );  
 }
 
 export default App;
