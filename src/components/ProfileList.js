@@ -43,7 +43,7 @@ function ProfileList({ profiles, onDelete, onEdit }) {
                     onClick={() => onEdit(profile)}
                     className="text-blue-500 hover:text-blue-700"
                   >
-                    📝
+                    ✍🏻
                   </button>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
