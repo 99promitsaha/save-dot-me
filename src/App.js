@@ -8,6 +8,7 @@ function App() {
   const [profiles, setProfiles] = useState([]);
   const [showDeleteSuccess, setShowDeleteSuccess] = useState(false);
   const [editingProfile, setEditingProfile] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchProfiles();
@@ -16,7 +17,10 @@ function App() {
   const fetchProfiles = () => {
     fetch("https://api.savedotme.xyz/profiles")
       .then((response) => response.json())
-      .then((data) => setProfiles(data))
+      .then((data) => {
+        setProfiles(data);
+        setIsLoading(false);
+      })
       .catch(console.error);
   };
 
@@ -54,14 +58,11 @@ function App() {
   };
 
   const updateProfile = (updatedData) => {
-    fetch(
-      `https://api.savedotme.xyz/profiles/${editingProfile._id}`,
-      {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedData),
-      }
-    )
+    fetch(`https://api.savedotme.xyz/profiles/${editingProfile._id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedData),
+    })
       .then((response) => response.json())
       .then(() => {
         fetchProfiles();
@@ -132,6 +133,7 @@ function App() {
           profiles={profiles}
           onDelete={deleteProfile}
           onEdit={editProfile}
+          isLoading={isLoading}
         />
       </div>
     </div>
