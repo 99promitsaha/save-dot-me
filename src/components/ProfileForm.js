@@ -96,6 +96,7 @@ function ProfileForm({ onSubmit }) {
             size={30}
             activeColor="#ffd700"
             classNames="flex justify-center space-x-1 mb-4"
+            required
           />
         </div>
         <button
