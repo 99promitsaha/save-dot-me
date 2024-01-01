@@ -14,14 +14,14 @@ function App() {
   }, []);
 
   const fetchProfiles = () => {
-    fetch("https://savedotme-app-edd4d.ondigitalocean.app/profiles")
+    fetch("https://api.savedotme.xyz/profiles")
       .then((response) => response.json())
       .then((data) => setProfiles(data))
       .catch(console.error);
   };
 
   const addProfile = (profile) => {
-    fetch("https://savedotme-app-edd4d.ondigitalocean.app/profiles", {
+    fetch("https://api.savedotme.xyz/profiles", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(profile),
@@ -33,7 +33,7 @@ function App() {
 
   const deleteProfile = (id) => {
     setTimeout(() => {
-      fetch(`https://savedotme-app-edd4d.ondigitalocean.app/profiles/${id}`, {
+      fetch(`https://api.savedotme.xyz/profiles/${id}`, {
         method: "DELETE",
       })
         .then(() => {
@@ -55,7 +55,7 @@ function App() {
 
   const updateProfile = (updatedData) => {
     fetch(
-      `https://savedotme-app-edd4d.ondigitalocean.app/profiles/${editingProfile._id}`,
+      `https://api.savedotme.xyz/profiles/${editingProfile._id}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
