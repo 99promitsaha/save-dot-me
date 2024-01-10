@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const Registration = () => {
   const [username, setUsername] = useState("");
@@ -7,31 +8,21 @@ const Registration = () => {
 
   const handleRegistration = async () => {
     try {
-      // Make an HTTP POST request to the registration endpoint
-      const response = await fetch("https://apiv2.savedotme.xyz/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      const response = await axios.post(
+        "https://apiv2.savedotme.xyz/auth/signup",
+        {
           username,
           email,
           password,
-        }),
-      });
+        }
+      );
 
-      // Check if the request was successful (status code 200)
-      if (response.ok) {
-        // Registration successful
+      if (response.status === 200) {
         console.log("Registration successful");
-        // You can redirect the user to the login page or perform any other actions
       } else {
-        // Registration failed, handle the error
-        const errorData = await response.json();
-        console.error("Registration failed:", errorData.message);
+        console.error("Registration failed:", response.data.message);
       }
     } catch (error) {
-      // Handle unexpected errors
       console.error("Error during registration:", error.message);
     }
   };

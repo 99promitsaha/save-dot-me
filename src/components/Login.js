@@ -1,11 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import axios from "axios";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    // Implement login logic here
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post("https://apiv2.savedotme.xyz/auth/login", {
+        email,
+        password,
+      });
+
+      if (response.status === 200) {
+        console.log("Login successful");
+      } else {
+        console.error("Login failed:", response.data.message);
+      }
+    } catch (error) {
+      console.error("Error during login:", error.message);
+    }
   };
 
   return (

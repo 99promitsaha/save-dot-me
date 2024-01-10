@@ -2,13 +2,11 @@ frontend-root/
 ├── node_modules/
 ├── public/
 ├── src/
+|   ├── pages/
+|   ├── services/
 |   ├── components/
-|   |    ├── DeleteSuccessMessage.js
-|   |    ├── EditProfileForm.js
-|   |    ├── Header.js
-|   |    ├── ProfileForm.js
-|   |    ├── ProfileList.js
-|   |    ├── UpdateSuccessMessage.js
+|   |    ├── Login.js
+|   |    ├── Registration.js
 │   ├── App.js
 │   └── index.js
 │   └── index.css
