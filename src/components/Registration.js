@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 const Registration = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleRegistration = async () => {
     try {
@@ -19,6 +21,8 @@ const Registration = () => {
 
       if (response.status === 200) {
         console.log("Registration successful");
+        alert("Registration successful. Verification email sent.");
+        navigate('/login');
       } else {
         console.error("Registration failed:", response.data.message);
       }

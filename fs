@@ -7,6 +7,8 @@ frontend-root/
 |   ├── components/
 |   |    ├── Login.js
 |   |    ├── Registration.js
+|   |    ├── Verification.js
+|   |    ├── utils.js
 │   ├── App.js
 │   └── index.js
 │   └── index.css
